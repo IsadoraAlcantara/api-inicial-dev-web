@@ -50,14 +50,14 @@ function carregarProdutos() {
 
 // Grava a coleção no arquivo JSON (indentado, UTF-8)
 function salvarProdutos(lista) {
-  fs.writeFileSync(ARQUIVO, JSON.stringify(lista, null, 2), 'utf-8');
+  fs.writeFileSync(ARQUIVO, JSON.stringify(lista, null, 3), 'utf-8');
 }
 
 // Coleção de produtos carregada do arquivo
 let produtos = carregarProdutos();
 
 // Função de validação (retorna { campo: mensagem }; vazio = válido)
-function validarProduto({ nome, preco }) {
+function validarProduto({ nome, preco, marca }) {
   const erros = {};
 
   // Nome: obrigatório, string, trim, não vazio, 2 a 100 caracteres
@@ -85,6 +85,20 @@ function validarProduto({ nome, preco }) {
     erros.preco = "O campo deve ter no máximo 2 casas decimais.";
   }
 
+  // Marca: obrigatório, string, trim, não vazio, 2 a 100 caracteres
+  if (marca === undefined) {
+    erros.marca = "O campo é obrigatório.";
+  } else if (typeof marca !== "string") {
+    erros.marca = "O campo deve ser uma string.";
+  } else {
+    const marcaLimpa = marca.trim();
+    if (marcaLimpa === "") {
+      erros.marca = "O campo não pode ser vazio.";
+    } else if (marcaLimpa.length < 2 || marcaLimpa.length > 100) {
+      erros.marca = "O marca deve possuir entre 2 e 100 caracteres.";
+    }
+  }
+
   return erros;
 }
 
@@ -102,7 +116,7 @@ app.get('/api/produtos/', (req, res) => {
   }
 
   // Ordenação: apenas 'nome' e 'preco' são permitidos; '-' indica decrescente
-  const camposOrdenacao = ["nome", "preco"];
+  const camposOrdenacao = ["nome", "marca", "preco"];
   let campoOrdenacao = null;
   let ordemDesc = false;
   if (ordering !== undefined && ordering !== "") {
@@ -191,16 +205,16 @@ app.get('/api/produtos/:id/', (req, res) => {
 
 // Rota POST (criação de recurso)
 app.post('/api/produtos/', (req, res) => {
-  const { nome, preco } = req.body;
+  const { nome, marca, preco } = req.body;
 
-  const erros = validarProduto({ nome, preco });
+  const erros = validarProduto({ nome, marca, preco });
   if (Object.keys(erros).length > 0) {
     return res.status(400).json({ detail: erros });
   }
 
   // Gera um id incremental com base nos produtos atuais (persistidos)
   const novoId = produtos.length ? Math.max(...produtos.map(p => p.id)) + 1 : 1;
-  const novoProduto = { id: novoId, nome: nome.trim(), preco };
+  const novoProduto = { id: novoId, nome: nome.trim(), marca: marca.trim(), preco };
 
   produtos.push(novoProduto);
   salvarProdutos(produtos);
@@ -213,15 +227,15 @@ app.put('/api/produtos/:id/', (req, res) => {
   const index = produtos.findIndex(p => p.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).json({ detail: "Produto não encontrado." });
 
-  const { nome, preco } = req.body;
+  const { nome, marca, preco } = req.body;
 
-  const erros = validarProduto({ nome, preco });
+  const erros = validarProduto({ nome, marca, preco });
   if (Object.keys(erros).length > 0) {
     return res.status(400).json({ detail: erros });
   }
 
   // Substitui completamente os dados, mantendo o id
-  produtos[index] = { id: parseInt(req.params.id), nome: nome.trim(), preco };
+  produtos[index] = { id: parseInt(req.params.id), nome: nome.trim(), marca: marca.trim(), preco };
   salvarProdutos(produtos);
 
   res.json(produtos[index]);
