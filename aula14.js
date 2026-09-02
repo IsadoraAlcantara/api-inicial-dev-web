@@ -10,7 +10,9 @@
 //
 // Validação  : nome (obrigatório, string, trim, 2–100) e preco (obrigatório, numérico, >0, ≤2 casas)
 // Filtros    : preco_minimo, preco_maximo
-// Busca      : search (parcial, case-insensitive, em 'nome')
+// Busca      : marca (parcial, case-insensitive, em 'marca')
+// Busca      : nome (parcial, case-insensitive, em 'nome')
+// Busca      : search (parcial, case-insensitive, em 'nome' e 'marca')
 // Ordenação  : ordering (nome, preco; prefixo '-' = decrescente)
 // Paginação  : page (padrão 1), page_size (padrão 10, máximo 100)
 //              resposta { page, page_size, total_pages, results }
@@ -85,7 +87,7 @@ function validarProduto({ nome, preco, marca }) {
     erros.preco = "O campo deve ter no máximo 2 casas decimais.";
   }
 
-  // Marca: obrigatório, string, trim, não vazio, 2 a 100 caracteres
+  // Marca: obrigatório, string, trim, não vazio, 2 a 50 caracteres
   if (marca === undefined) {
     erros.marca = "O campo é obrigatório.";
   } else if (typeof marca !== "string") {
@@ -94,7 +96,7 @@ function validarProduto({ nome, preco, marca }) {
     const marcaLimpa = marca.trim();
     if (marcaLimpa === "") {
       erros.marca = "O campo não pode ser vazio.";
-    } else if (marcaLimpa.length < 2 || marcaLimpa.length > 100) {
+    } else if (marcaLimpa.length < 2 || marcaLimpa.length > 50) {
       erros.marca = "O marca deve possuir entre 2 e 100 caracteres.";
     }
   }
@@ -105,7 +107,8 @@ function validarProduto({ nome, preco, marca }) {
 // Rota GET (coleção), com filtros, busca, ordenação e paginação
 // GET não altera nem salva o arquivo
 app.get('/api/produtos/', (req, res) => {
-  const { search, preco_minimo, preco_maximo, ordering, page, page_size } = req.query;
+  // const { search, preco_minimo, preco_maximo, ordering, page, page_size } = req.query;
+  const { nome, marca, search, preco_minimo, preco_maximo, ordering, page, page_size } = req.query;
 
   const erros = {};
   if (preco_minimo !== undefined && preco_minimo !== "" && isNaN(Number(preco_minimo))) {
@@ -115,7 +118,7 @@ app.get('/api/produtos/', (req, res) => {
     erros.preco_maximo = "O valor deve ser numérico.";
   }
 
-  // Ordenação: apenas 'nome' e 'preco' são permitidos; '-' indica decrescente
+  // Ordenação: apenas 'nome', 'preco', 'marca' são permitidos; '-' indica decrescente
   const camposOrdenacao = ["nome", "marca", "preco"];
   let campoOrdenacao = null;
   let ordemDesc = false;
@@ -166,10 +169,30 @@ app.get('/api/produtos/', (req, res) => {
     resultado = resultado.filter(p => p.preco <= Number(preco_maximo));
   }
 
-  // 3. Busca por nome (parcial e case-insensitive)
+  // 3. Busca por nome e marca (parcial e case-insensitive)
+  // if (search !== undefined && search !== "" || nome !== undefined && nome !== "") {
+  //   const termoNome = nome.toLowerCase();
+  //   resultado = resultado.filter(p => p.nome.toLowerCase().includes(termoNome));
+  // }
+  
+  // else if (search !== undefined && search !== "" || marca !== undefined && marca !== "") {
+  //   const termoMarca = marca.toLowerCase();
+  //   resultado = resultado.filter(p => p.marca.toLowerCase().includes(termoMarca));
+  // }
+  
   if (search !== undefined && search !== "") {
     const termo = search.toLowerCase();
-    resultado = resultado.filter(p => p.nome.toLowerCase().includes(termo));
+    resultado = resultado.filter(p => p.nome.toLowerCase().includes(termo) || p.marca.toLowerCase().includes(termo));
+  }
+
+  if (nome !== undefined && nome !== "") {
+    const termoNome = nome.toLowerCase();
+    resultado = resultado.filter(p => p.nome.toLowerCase().includes(termoNome));
+  }
+
+  if (marca !== undefined && marca !== "") {
+    const termoMarca = marca.toLowerCase();
+    resultado = resultado.filter(p => p.marca.toLowerCase().includes(termoMarca));
   }
 
   // 4. Ordenação
@@ -178,9 +201,14 @@ app.get('/api/produtos/', (req, res) => {
       let comparacao;
       if (campoOrdenacao === "preco") {
         comparacao = a.preco - b.preco;
-      } else {
+      } 
+      else if (campoOrdenacao === "marca") {
+        comparacao = a.marca.toLowerCase().localeCompare(b.marca.toLowerCase());
+      }
+      else {
         comparacao = a.nome.toLowerCase().localeCompare(b.nome.toLowerCase());
       }
+
       return ordemDesc ? -comparacao : comparacao;
     });
   }

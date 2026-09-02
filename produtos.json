@@ -303,5 +303,20 @@
     "id": 61,
     "nome": "Cabo HDMI",
     "preco": 20
+  },
+  {
+    "id": 62,
+    "nome": "Cadeira Gamer",
+    "preco": 3199.99
+  },
+  {
+    "id": 63,
+    "nome": "Cadeira Gamer",
+    "preco": 2199.99
+  },
+  {
+    "id": 64,
+    "nome": "Cadeira Gamer",
+    "preco": 3199.99
   }
 ]

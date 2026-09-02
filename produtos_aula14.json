@@ -9,7 +9,7 @@
       "id": 2,
       "nome": "Impressora 3D",
       "marca": "Creality",
-      "preco": 5999.99
+      "preco": 6999.99
    },
    {
       "id": 3,
@@ -358,12 +358,6 @@
       "nome": "Cadeira de Escritório",
       "marca": "Flexform",
       "preco": 699.9
-   },
-   {
-      "id": 61,
-      "nome": "Cabo HDMI",
-      "marca": "Ugreen",
-      "preco": 20
    },
    {
       "id": 62,
