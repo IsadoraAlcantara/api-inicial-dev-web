@@ -115,7 +115,7 @@ function validarProduto({ nome, preco, marca, estoque }) {
 
 // Rota GET (coleção), com filtros, busca, ordenação e paginação
 // GET não altera nem salva o arquivo
-app.get(" ", (req, res) => {
+app.get("/api/produtos/", (req, res) => {
   // const { search, preco_minimo, preco_maximo, ordering, page, page_size } = req.query;
   const {
     nome,
@@ -149,14 +149,14 @@ app.get(" ", (req, res) => {
   if (
     estoque_minimo !== undefined &&
     estoque_minimo !== "" &&
-    !Number.isInteger(estoque_minimo)
+    !Number.isInteger(Number(estoque_minimo))
   ) {
-    erros.estoque_minimo = "O valor deve ser um número inteiro.";
+    erros.estoque_minimo = "O valor deve ser um número inteiro";
   }
   if (
     estoque_maximo !== undefined &&
     estoque_maximo !== "" &&
-    !Number.isInteger(estoque_maximo)
+    !Number.isInteger(Number(estoque_maximo))
   ) {
     erros.estoque_maximo = "O valor deve ser um número.";
   }
@@ -253,7 +253,7 @@ app.get(" ", (req, res) => {
       } else if (campoOrdenacao === "marca") {
         comparacao = a.marca.toLowerCase().localeCompare(b.marca.toLowerCase());
       } else if (campoOrdenacao === "estoque") {
-        comparacao = a.estoque.toLowerCase().localeCompare(b.estoque.toLowerCase());
+        comparacao = a.estoque - b.estoque;
       } else {
         comparacao = a.nome.toLowerCase().localeCompare(b.nome.toLowerCase());
       }
@@ -304,7 +304,7 @@ app.post("/api/produtos/", (req, res) => {
     nome: nome.trim(),
     marca: marca.trim(),
     preco,
-    estoque
+    estoque,
   };
 
   produtos.push(novoProduto);
@@ -332,6 +332,7 @@ app.put("/api/produtos/:id/", (req, res) => {
     nome: nome.trim(),
     marca: marca.trim(),
     preco,
+    estoque
   };
   salvarProdutos(produtos);
 
