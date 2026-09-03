@@ -1,0 +1,505 @@
+[
+   {
+      "id": 1,
+      "nome": "Pen drive 128 GB Kingston",
+      "marca": "Kingston",
+      "preco": 64.99,
+      "estoque": 45,
+      "descricao": "Pen drive USB 3.2 de alta velocidade compatível com múltiplos sistemas operacionais."
+   },
+   {
+      "id": 2,
+      "nome": "Impressora 3D",
+      "marca": "Creality",
+      "preco": 5999.99,
+      "estoque": 8,
+      "descricao": "Impressora FDM com nivelamento automático e área de impressão ampliada."
+   },
+   {
+      "id": 3,
+      "nome": "Notebook",
+      "marca": "Dell",
+      "preco": 4999.99,
+      "estoque": 14,
+      "descricao": null
+   },
+   {
+      "id": 4,
+      "nome": "Mouse USB",
+      "marca": "Logitech",
+      "preco": 39.99,
+      "estoque": 60,
+      "descricao": "Mouse óptico ergonômico com sensor de 1000 DPI e conexão plug and play."
+   },
+   {
+      "id": 5,
+      "nome": "Teclado USB",
+      "marca": "Redragon",
+      "preco": 89.99,
+      "estoque": 35,
+      "descricao": null
+   },
+   {
+      "id": 6,
+      "nome": "Monitor Ultra Wide",
+      "marca": "LG",
+      "preco": 899.99,
+      "estoque": 12,
+      "descricao": "Painel IPS de 29 polegadas com formato 21:9 e suporte a HDR10."
+   },
+   {
+      "id": 7,
+      "nome": "Mouse com fio",
+      "marca": "Multilaser",
+      "preco": 9.99,
+      "estoque": 120,
+      "descricao": null
+   },
+   {
+      "id": 8,
+      "nome": "Teclado com fio",
+      "marca": "Fortrek",
+      "preco": 30,
+      "estoque": 85,
+      "descricao": "Teclado padrão ABNT2 com teclas de membrana de perfil baixo."
+   },
+   {
+      "id": 9,
+      "nome": "Caneta Bic Azul",
+      "marca": "Bic",
+      "preco": 1.99,
+      "estoque": 500,
+      "descricao": "Caneta esferográfica clássica com ponta média de 1.0mm."
+   },
+   {
+      "id": 10,
+      "nome": "Lápis 2B",
+      "marca": "Faber-Castell",
+      "preco": 1.99,
+      "estoque": 350,
+      "descricao": null
+   },
+   {
+      "id": 11,
+      "nome": "Caderno Universitário 200 folhas",
+      "marca": "Tilibra",
+      "preco": 19.9,
+      "estoque": 75,
+      "descricao": "Caderno espiral universitário com 10 matérias e capa dura laminada."
+   },
+   {
+      "id": 12,
+      "nome": "Apontador Duplo",
+      "marca": "Maped",
+      "preco": 2.5,
+      "estoque": 110,
+      "descricao": null
+   },
+   {
+      "id": 13,
+      "nome": "Borracha branca",
+      "marca": "Mercur",
+      "preco": 1.2,
+      "estoque": 200,
+      "descricao": "Borracha macia que não mancha o papel ao apagar traços de grafite."
+   },
+   {
+      "id": 14,
+      "nome": "Régua 30 cm",
+      "marca": "Waleu",
+      "preco": 3.9,
+      "estoque": 90,
+      "descricao": null
+   },
+   {
+      "id": 15,
+      "nome": "Mochila Escolar",
+      "marca": "Sestini",
+      "preco": 129.9,
+      "estoque": 22,
+      "descricao": "Compartimento acolchoado para notebook de até 15.6 polegadas e alças respiráveis."
+   },
+   {
+      "id": 16,
+      "nome": "Tablet Android 10”",
+      "marca": "Samsung",
+      "preco": 1599.99,
+      "estoque": 18,
+      "descricao": "Tela WUXGA com alto-falantes quádruplos Dolby Atmos e bateria de 7040 mAh."
+   },
+   {
+      "id": 17,
+      "nome": "Smartphone Android",
+      "marca": "Motorola",
+      "preco": 2399.99,
+      "estoque": 25,
+      "descricao": null
+   },
+   {
+      "id": 18,
+      "nome": "Carregador USB-C",
+      "marca": "Anker",
+      "preco": 59.9,
+      "estoque": 65,
+      "descricao": "Adaptador de tomada Power Delivery com potência de 30W e tecnologia GaN."
+   },
+   {
+      "id": 19,
+      "nome": "Caixa de Som Bluetooth",
+      "marca": "JBL",
+      "preco": 299.9,
+      "estoque": 30,
+      "descricao": "Caixa portátil à prova d'água IPX7 com autonomia para até 12 horas."
+   },
+   {
+      "id": 20,
+      "nome": "Fone de Ouvido Sem Fio",
+      "marca": "Sony",
+      "preco": 499.9,
+      "estoque": 40,
+      "descricao": null
+   },
+   {
+      "id": 21,
+      "nome": "Headset Gamer",
+      "marca": "HyperX",
+      "preco": 249.9,
+      "estoque": 28,
+      "descricao": "Drivers de 53mm com almofadas de espuma viscoelástica e microfone removível."
+   },
+   {
+      "id": 22,
+      "nome": "HD Externo 1TB",
+      "marca": "Seagate",
+      "preco": 399.99,
+      "estoque": 16,
+      "descricao": null
+   },
+   {
+      "id": 23,
+      "nome": "SSD 512GB",
+      "marca": "Crucial",
+      "preco": 499.99,
+      "estoque": 50,
+      "descricao": "Unidade interna de estado sólido NVMe M.2 com leitura sequencial de até 3500 MB/s."
+   },
+   {
+      "id": 24,
+      "nome": "Placa de Vídeo RTX 4060",
+      "marca": "Galax",
+      "preco": 2499.99,
+      "estoque": 9,
+      "descricao": "Placa com 8GB GDDR6, suporte a DLSS 3 e Ray Tracing dedicado."
+   },
+   {
+      "id": 25,
+      "nome": "Processador Ryzen 7",
+      "marca": "AMD",
+      "preco": 1599.99,
+      "estoque": 15,
+      "descricao": null
+   },
+   {
+      "id": 26,
+      "nome": "Memória RAM 16GB",
+      "marca": "Corsair",
+      "preco": 299.9,
+      "estoque": 42,
+      "descricao": "Módulo DDR4 3200MHz com dissipador de alumínio para alto desempenho térmico."
+   },
+   {
+      "id": 27,
+      "nome": "Placa-mãe ASUS",
+      "marca": "ASUS",
+      "preco": 899.99,
+      "estoque": 11,
+      "descricao": "Chipset B550 compatível com soquete AM4 e suporte a PCIe 4.0."
+   },
+   {
+      "id": 28,
+      "nome": "Fonte 650W",
+      "marca": "EVGA",
+      "preco": 429.9,
+      "estoque": 20,
+      "descricao": null
+   },
+   {
+      "id": 29,
+      "nome": "Gabinete Gamer",
+      "marca": "Pichau",
+      "preco": 349.9,
+      "estoque": 13,
+      "descricao": "Lateral em vidro temperado com 3 ventoinhas RGB frontais inclusas."
+   },
+   {
+      "id": 30,
+      "nome": "Cooler para CPU",
+      "marca": "DeepCool",
+      "preco": 599.9,
+      "estoque": 17,
+      "descricao": null
+   },
+   {
+      "id": 31,
+      "nome": "Smart TV 50”",
+      "marca": "TCL",
+      "preco": 2799.9,
+      "estoque": 7,
+      "descricao": "Resolução 4K UHD com sistema Google TV integrado e comando de voz no controle."
+   },
+   {
+      "id": 32,
+      "nome": "Controle Remoto Universal",
+      "marca": "Elsys",
+      "preco": 49.9,
+      "estoque": 55,
+      "descricao": null
+   },
+   {
+      "id": 33,
+      "nome": "Impressora Multifuncional",
+      "marca": "Epson",
+      "preco": 699.99,
+      "estoque": 10,
+      "descricao": "Tanque de tinta econômico com Wi-Fi Direct e funções de cópia e scanner."
+   },
+   {
+      "id": 34,
+      "nome": "Scanner Portátil",
+      "marca": "Canon",
+      "preco": 899.99,
+      "estoque": 6,
+      "descricao": null
+   },
+   {
+      "id": 35,
+      "nome": "Projetor Full HD",
+      "marca": "BenQ",
+      "preco": 1999.99,
+      "estoque": 5,
+      "descricao": "Luminosidade de 3500 lúmens com alto contraste e correção keystone automática."
+   },
+   {
+      "id": 36,
+      "nome": "Lousa Branca 1x1m",
+      "marca": "Stalo",
+      "preco": 149.9,
+      "estoque": 15,
+      "descricao": null
+   },
+   {
+      "id": 37,
+      "nome": "Marcador de Quadro Branco",
+      "marca": "Pilot",
+      "preco": 19.9,
+      "estoque": 80,
+      "descricao": "Tinta especial de fácil remoção com ponta redonda resistente."
+   },
+   {
+      "id": 38,
+      "nome": "Post-it Amarelo",
+      "marca": "3M",
+      "preco": 12.9,
+      "estoque": 140,
+      "descricao": "Bloco adesivo reposicionável formato 76mm x 76mm com 100 folhas."
+   },
+   {
+      "id": 39,
+      "nome": "Clips de Papel",
+      "marca": "Bacchi",
+      "preco": 5.9,
+      "estoque": 220,
+      "descricao": null
+   },
+   {
+      "id": 40,
+      "nome": "Grampeador de Mesa",
+      "marca": "CIS",
+      "preco": 29.9,
+      "estoque": 38,
+      "descricao": "Capacidade para até 25 folhas utilizando grampos padrão 26/6."
+   },
+   {
+      "id": 41,
+      "nome": "Estabilizador 500VA",
+      "marca": "SMS",
+      "preco": 249.9,
+      "estoque": 19,
+      "descricao": null
+   },
+   {
+      "id": 42,
+      "nome": "Nobreak 1200VA",
+      "marca": "Intelbras",
+      "preco": 1199.99,
+      "estoque": 8,
+      "descricao": "Proteção bivolt com bateria interna recarregável e 6 tomadas no padrão NBR 14136."
+   },
+   {
+      "id": 43,
+      "nome": "Webcam Full HD",
+      "marca": "Razer",
+      "preco": 349.9,
+      "estoque": 24,
+      "descricao": "Captura a 1080p 60FPS com foco automático avançado e anel luminoso integrado."
+   },
+   {
+      "id": 44,
+      "nome": "Microfone Condensador USB",
+      "marca": "Fifine",
+      "preco": 799.9,
+      "estoque": 16,
+      "descricao": null
+   },
+   {
+      "id": 45,
+      "nome": "Tripé Ajustável",
+      "marca": "Greika",
+      "preco": 129.9,
+      "estoque": 33,
+      "descricao": "Estrutura de alumínio com altura ajustável até 1,60m e cabeça panorâmica de 3 vias."
+   },
+   {
+      "id": 46,
+      "nome": "Notebook Gamer",
+      "marca": "Acer",
+      "preco": 8999.99,
+      "estoque": 6,
+      "descricao": null
+   },
+   {
+      "id": 47,
+      "nome": "Ultrabook Dell XPS",
+      "marca": "Dell",
+      "preco": 7499.99,
+      "estoque": 5,
+      "descricao": "Chassi usinado em alumínio CNC com tela InfinityEdge OLED e processador Intel Core Ultra."
+   },
+   {
+      "id": 48,
+      "nome": "Chromebook Lenovo",
+      "marca": "Lenovo",
+      "preco": 2299.9,
+      "estoque": 12,
+      "descricao": null
+   },
+   {
+      "id": 49,
+      "nome": "MacBook Air M2",
+      "marca": "Apple",
+      "preco": 10499.99,
+      "estoque": 9,
+      "descricao": "Design ultrafino sem ventoinha com tela Liquid Retina de 13.6\" e chip M2 octa-core."
+   },
+   {
+      "id": 50,
+      "nome": "Servidor Torre",
+      "marca": "HPE",
+      "preco": 14999.99,
+      "estoque": 3,
+      "descricao": null
+   },
+   {
+      "id": 51,
+      "nome": "Caixa Organizadora",
+      "marca": "Sanremo",
+      "preco": 24.9,
+      "estoque": 65,
+      "descricao": "Caixa plástica transparente com travas laterais e volume de 20 litros."
+   },
+   {
+      "id": 52,
+      "nome": "Estojo Escolar",
+      "marca": "Kipling",
+      "preco": 39.9,
+      "estoque": 48,
+      "descricao": null
+   },
+   {
+      "id": 53,
+      "nome": "Tesoura Escolar",
+      "marca": "Mundial",
+      "preco": 7.9,
+      "estoque": 95,
+      "descricao": "Lâminas em aço inox com pontas arredondadas para segurança durante o uso."
+   },
+   {
+      "id": 54,
+      "nome": "Cola Branca 90g",
+      "marca": "Pritt",
+      "preco": 4.9,
+      "estoque": 130,
+      "descricao": null
+   },
+   {
+      "id": 55,
+      "nome": "Agenda 2025",
+      "marca": "Spiral",
+      "preco": 59.9,
+      "estoque": 40,
+      "descricao": "Planejamento diário encadernado em wire-o com fitilho marcador e bolso interno."
+   },
+   {
+      "id": 56,
+      "nome": "Plastificadora A4",
+      "marca": "Menno",
+      "preco": 399.9,
+      "estoque": 11,
+      "descricao": null
+   },
+   {
+      "id": 57,
+      "nome": "Calculadora Científica",
+      "marca": "Casio",
+      "preco": 129.9,
+      "estoque": 32,
+      "descricao": "Visor de matriz natural com mais de 250 funções científicas e estatísticas."
+   },
+   {
+      "id": 58,
+      "nome": "Cadeira Gamer",
+      "marca": "ThunderX3",
+      "preco": 1199.99,
+      "estoque": 14,
+      "descricao": null
+   },
+   {
+      "id": 59,
+      "nome": "Mesa para Computador",
+      "marca": "Madesa",
+      "preco": 499.9,
+      "estoque": 10,
+      "descricao": "Tampo reforçado em MDP com pintura poliéster e passa-cabos integrado."
+   },
+   {
+      "id": 60,
+      "nome": "Cadeira de Escritório",
+      "marca": "Flexform",
+      "preco": 699.9,
+      "estoque": 18,
+      "descricao": null
+   },
+   {
+      "id": 61,
+      "nome": "Cabo HDMI",
+      "marca": "Ugreen",
+      "preco": 20,
+      "estoque": 150,
+      "descricao": "Cabo versão 2.1 trançado em nylon com suporte a 8K 60Hz e conectores banhados a ouro."
+   },
+   {
+      "id": 62,
+      "nome": "Monitor Pro 4K",
+      "marca": "LG",
+      "preco": 2800,
+      "estoque": 8,
+      "descricao": "Painel IPS com HDR e conexões USB-C"
+   },
+   {
+      "id": 63,
+      "nome": "Cabo HDMI",
+      "marca": "Ugreen",
+      "preco": 35,
+      "estoque": 50
+   }
+]

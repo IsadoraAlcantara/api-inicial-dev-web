@@ -30,7 +30,7 @@ const app = express();
 app.use(express.json());
 
 // Caminho do arquivo de persistência
-const ARQUIVO = path.join(__dirname, "produtos_aula15.json");
+const ARQUIVO = path.join(__dirname, "produtos_aula16.json");
 
 // Carrega os produtos do arquivo JSON
 function carregarProdutos() {
@@ -59,7 +59,7 @@ function salvarProdutos(lista) {
 let produtos = carregarProdutos();
 
 // Função de validação (retorna { campo: mensagem }; vazio = válido)
-function validarProduto({ nome, preco, marca, estoque }) {
+function validarProduto({ nome, preco, marca, estoque, descricao }) {
   const erros = {};
 
   // Nome: obrigatório, string, trim, não vazio, 2 a 100 caracteres
@@ -107,6 +107,18 @@ function validarProduto({ nome, preco, marca, estoque }) {
       erros.marca = "O campo não pode ser vazio.";
     } else if (marcaLimpa.length < 2 || marcaLimpa.length > 50) {
       erros.marca = "O marca deve possuir entre 2 e 100 caracteres.";
+    }
+  }
+
+  // Descricao: opicional, string, trim, 0 a 500 caracteres
+  if (descricao !== undefined && descricao !== null) {
+    if (typeof descricao !== "string") {
+      erros.descricao = "O campo deve ser uma string.";
+    } else {
+      const descricaoLimpo = descricao.trim();
+      if (descricaoLimpo.length > 500) {
+        erros.descricao = "A descrição não pode passar de 500 caracteres.";
+      }
     }
   }
 
@@ -162,7 +174,7 @@ app.get("/api/produtos/", (req, res) => {
   }
 
   // Ordenação: apenas 'nome', 'preco', 'marca' são permitidos; '-' indica decrescente
-  const camposOrdenacao = ["nome", "marca", "preco", "estoque"];
+  const camposOrdenacao = ["nome", "marca", "preco", "estoque", "descricao"];
   let campoOrdenacao = null;
   let ordemDesc = false;
   if (ordering !== undefined && ordering !== "") {
@@ -223,25 +235,14 @@ app.get("/api/produtos/", (req, res) => {
   // 4. Busca por nome e marca (parcial e case-insensitive)
   if (search !== undefined && search !== "") {
     const termo = search.toLowerCase();
-    resultado = resultado.filter(
-      (p) =>
-        p.nome.toLowerCase().includes(termo) ||
-        p.marca.toLowerCase().includes(termo),
-    );
-  }
+    resultado = resultado.filter((p) => {
+      const filtraNome = p.nome.toLowerCase().includes(termo);
+      const filtraMarca = p.marca.toLowerCase().includes(termo);
 
-  if (nome !== undefined && nome !== "") {
-    const termoNome = nome.toLowerCase();
-    resultado = resultado.filter((p) =>
-      p.nome.toLowerCase().includes(termoNome),
-    );
-  }
-
-  if (marca !== undefined && marca !== "") {
-    const termoMarca = marca.toLowerCase();
-    resultado = resultado.filter((p) =>
-      p.marca.toLowerCase().includes(termoMarca),
-    );
+      const filtraDescricao =
+        p.descricao && p.descricao.toLowerCase().includes(termo);
+      return filtraNome || filtraMarca || filtraDescricao;
+    });
   }
 
   // 5. Ordenação
@@ -254,6 +255,15 @@ app.get("/api/produtos/", (req, res) => {
         comparacao = a.marca.toLowerCase().localeCompare(b.marca.toLowerCase());
       } else if (campoOrdenacao === "estoque") {
         comparacao = a.estoque - b.estoque;
+      } else if (campoOrdenacao === "descricao") {
+        if (!a.descricao && !b.descricao) comparacao = 0;
+        else if (!a.descricao) comparacao = 1;
+        else if (!b.descricao) comparacao = -1;
+        else {
+          comparacao = a.descricao
+            .toLowerCase()
+            .localeCompare(b.descricao.toLowerCase());
+        }
       } else {
         comparacao = a.nome.toLowerCase().localeCompare(b.nome.toLowerCase());
       }
@@ -288,9 +298,9 @@ app.get("/api/produtos/:id/", (req, res) => {
 
 // Rota POST (criação de recurso)
 app.post("/api/produtos/", (req, res) => {
-  const { nome, marca, preco, estoque } = req.body;
+  const { nome, marca, preco, estoque, descricao } = req.body;
 
-  const erros = validarProduto({ nome, marca, preco, estoque });
+  const erros = validarProduto({ nome, marca, preco, estoque, descricao });
   if (Object.keys(erros).length > 0) {
     return res.status(400).json({ detail: erros });
   }
@@ -305,6 +315,7 @@ app.post("/api/produtos/", (req, res) => {
     marca: marca.trim(),
     preco,
     estoque,
+    descricao
   };
 
   produtos.push(novoProduto);
@@ -319,9 +330,9 @@ app.put("/api/produtos/:id/", (req, res) => {
   if (index === -1)
     return res.status(404).json({ detail: "Produto não encontrado." });
 
-  const { nome, marca, preco, estoque } = req.body;
+  const { nome, marca, preco, estoque, descricao } = req.body;
 
-  const erros = validarProduto({ nome, marca, preco, estoque });
+  const erros = validarProduto({ nome, marca, preco, estoque, descricao });
   if (Object.keys(erros).length > 0) {
     return res.status(400).json({ detail: erros });
   }
@@ -332,7 +343,8 @@ app.put("/api/produtos/:id/", (req, res) => {
     nome: nome.trim(),
     marca: marca.trim(),
     preco,
-    estoque
+    estoque,
+    descricao: descricao.trim(),
   };
   salvarProdutos(produtos);
 
